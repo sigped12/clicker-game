@@ -15,6 +15,8 @@ var clicker_img = document.querySelector("#clicker_img");
 var clicker_values = document.querySelector("#clicker_values");
 var worker_img = document.querySelector("#worker_img");
 var worker_values = document.querySelector("#worker_values");
+var chips_sold_el = document.querySelector("#chips_sold_el");
+var chips_produced_el = document.querySelector("#chips_produced_el");
 
 // set
 var clicker_price = 40;
@@ -24,8 +26,8 @@ clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
 
 // function that runs when the chips is clicked
 function chips_click(){
-    chips = chips + chips_add;
-    chips_produced = chips_produced + chips;
+    chips += chips_add;
+    chips_produced += chips_add;
     console.log("+ " + chips_add + " chips");
 }
 
@@ -34,7 +36,12 @@ var update_timer = setInterval(updateTimer, 10);
 function updateTimer(){
     money_amount.innerHTML=money;
     chips_amount.innerHTML=chips;
+    chips_sold_el.innerHTML="Chips sold: " + chips_sold;
+    chips_produced_el.innerHTML="Chips produced: " + chips_produced;
 }
+
+// upgrades
+var more_chips = 0;
 
 // selling
 var worker_sell_interval = 1000;
@@ -52,7 +59,7 @@ function worker_sell(){
 }
 
 // clicker interval
-var clicker_interval = 10000;
+var clicker_interval = 4000;
 var clicker_timer = setInterval(clickerTimer, clicker_interval);
 
 function buy_clicker(){
@@ -60,7 +67,7 @@ function buy_clicker(){
         clickers++;
         money -= clicker_price;
         clicker_interval -= 20;
-        clicker_price += 20
+        clicker_price += 20;
         clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
     }
 }
@@ -68,11 +75,11 @@ function buy_clicker(){
 // clicker timer, repeats depending on interval
 function clickerTimer(){
     chips += clickers;
+    chips_produced += clickers;
     chips_amount.innerHTML=chips;
 }
 
 // worker
-
 function buy_worker(){
     if (money >= worker_price){
         workers++;
@@ -81,6 +88,9 @@ function buy_worker(){
         worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
     }
 }
+
+upgrade1_img.style.src = "bilde.jpg"
+upgrade1_img.addEventListener("click", upgrade1);
 
 chips_img.addEventListener("click", chips_click);
 clicker_img.addEventListener("click", buy_clicker);
