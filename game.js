@@ -9,8 +9,8 @@ var factories = 1;
 var money_for_chips = 10;
 
 var chips_img = document.querySelector("#chips_img");
-var chips_amount = document.querySelector("#chips_amount");
-var money_amount = document.querySelector("#money_amount");
+var chips_values = document.querySelector("#chips_values");
+var money_values = document.querySelector("#money_values");
 var clicker_img = document.querySelector("#clicker_img");
 var clicker_values = document.querySelector("#clicker_values");
 var worker_img = document.querySelector("#worker_img");
@@ -35,8 +35,8 @@ function chips_click(){
 // update
 var update_timer = setInterval(updateTimer, 10);
 function updateTimer(){
-    money_amount.innerHTML=Math.round(money);
-    chips_amount.innerHTML=Math.round(chips);
+    money_values.innerHTML="Money: " + Math.round(money);
+    chips_values.innerHTML="Chips: " + Math.round(chips);
     chips_sold_el.innerHTML="Chips sold: " + chips_sold;
     chips_produced_el.innerHTML="Chips produced: " + chips_produced;
 }
@@ -93,7 +93,6 @@ function buy_worker(){
 // upgrade function
 function upgrade1(){
     if (money >= upgrade1_price){
-        workers++;
         money -= upgrade1_price;
         //upgrade1_price *= 3;
         upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Amount: " + workers;
