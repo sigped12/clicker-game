@@ -20,9 +20,10 @@ var chips_produced_el = document.querySelector("#chips_produced_el");
 
 // set
 var clicker_price = 40;
-var worker_price = 40;
+var worker_price = 80;
 worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
 clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
+var upgrade1_price = 500;
 
 // function that runs when the chips is clicked
 function chips_click(){
@@ -34,8 +35,8 @@ function chips_click(){
 // update
 var update_timer = setInterval(updateTimer, 10);
 function updateTimer(){
-    money_amount.innerHTML=money;
-    chips_amount.innerHTML=chips;
+    money_amount.innerHTML=Math.round(money);
+    chips_amount.innerHTML=Math.round(chips);
     chips_sold_el.innerHTML="Chips sold: " + chips_sold;
     chips_produced_el.innerHTML="Chips produced: " + chips_produced;
 }
@@ -44,7 +45,7 @@ function updateTimer(){
 var more_chips = 0;
 
 // selling
-var worker_sell_interval = 1000;
+var worker_sell_interval = 1500;
 var worker_sell_timer = setInterval(worker_sell, worker_sell_interval);
 function worker_sell(){
     worker_sell_amount = workers * 2;
@@ -67,8 +68,8 @@ function buy_clicker(){
         clickers++;
         money -= clicker_price;
         clicker_interval -= 20;
-        clicker_price += 20;
-        clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
+        clicker_price *= 1.2;
+        clicker_values.innerHTML="Price: " + Math.round(clicker_price) + "<br>Amount: " + clickers;
     }
 }
 
@@ -84,12 +85,22 @@ function buy_worker(){
     if (money >= worker_price){
         workers++;
         money -= worker_price;
-        worker_price += 20
-        worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
+        worker_price *= 1.33;
+        worker_values.innerHTML="Price: " + Math.round(worker_price) + "<br>Amount: " + workers;
     }
 }
 
-upgrade1_img.style.src = "bilde.jpg"
+// upgrade function
+function upgrade1(){
+    if (money >= upgrade1_price){
+        workers++;
+        money -= upgrade1_price;
+        //upgrade1_price *= 3;
+        upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Amount: " + workers;
+    }
+}
+
+upgrade1_img.style.src = "img/add.png";
 upgrade1_img.addEventListener("click", upgrade1);
 
 chips_img.addEventListener("click", chips_click);

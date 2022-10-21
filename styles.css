@@ -1,6 +1,12 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 #chips_img {
-    width:15%;
-    height:15%;
+    width:10%;
+    height:10%;
 }
 
 #clicker_img {
@@ -11,4 +17,9 @@
 #worker_img {
     width:7%;
     height:7%;
+}
+
+#upgrade1_img {
+    width:10%;
+    height:10%;
 }
