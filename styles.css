@@ -14,9 +14,23 @@
 }
 
 #chips_img {
-    width: 15%;
-    height: 15%;
+    width: 10%;
+    height: 40%;
     margin-bottom: 3%;
+}
+
+#chips_img_right {
+    width: 10%;
+    height: 40%;
+    margin-bottom: 3%;
+    margin-left: 1%;
+}
+
+#chips_img_left {
+    width: 10%;
+    height: 40%;
+    margin-bottom: 3%;
+    margin-left: -1%;
 }
 
 #clicker_img {

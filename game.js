@@ -25,11 +25,30 @@ worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
 clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
 var upgrade1_price = 500;
 
+let chips_move = 0;
+
 // function that runs when the chips is clicked
 function chips_click(){
     chips += chips_add;
     chips_produced += chips_add;
     console.log("+ " + chips_add + " chips");
+
+    // chips animation
+    /*
+    if (chips_move = 0) {
+        chips_move++;
+        chips_img.classList.remove("chips_img_left");
+        chips_img.classList.add("chips_img");
+    } else if (chips_move = 1) {
+        chips_move++;
+        chips_img.classList.remove("chips_img");
+        chips_img.classList.add("chips_img_right");
+    } else if (chips_move = 2) {
+        chips_move -= 2;
+        chips_img.classList.remove("chips_img_right");
+        chips_img.classList.add("chips_img_left");
+    }
+    */
 }
 
 // update
@@ -42,7 +61,7 @@ function updateTimer(){
 }
 
 // upgrades
-var more_chips = 0;
+
 
 // selling
 var worker_sell_interval = 1500;
@@ -60,14 +79,24 @@ function worker_sell(){
 }
 
 // clicker interval
-var clicker_interval = 4000;
+var clicker_interval = 2000;
 var clicker_timer = setInterval(clickerTimer, clicker_interval);
+var clicker_earn = 0;
+/*
+let clicker_active = false;
+if (clicker_active = true) {
+    clicker_earn = 2;
+    console.log("clicker_active: " + clicker_active);
+}
+*/
 
 function buy_clicker(){
     if (money >= clicker_price){
         clickers++;
         money -= clicker_price;
-        clicker_interval -= 20;
+        clicker_active = true;
+        clicker_interval -= 20
+        //clicker_earn *= 2;
         clicker_price *= 1.2;
         clicker_values.innerHTML="Price: " + Math.round(clicker_price) + "<br>Amount: " + clickers;
     }
@@ -75,9 +104,10 @@ function buy_clicker(){
 
 // clicker timer, repeats depending on interval
 function clickerTimer(){
+    //chips += clicker_earn;
     chips += clickers;
     chips_produced += clickers;
-    chips_amount.innerHTML=chips;
+    chips_values.innerHTML="Chips: " + chips;
 }
 
 // worker
