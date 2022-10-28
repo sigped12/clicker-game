@@ -17,6 +17,8 @@ var worker_img = document.querySelector("#worker_img");
 var worker_values = document.querySelector("#worker_values");
 var chips_sold_el = document.querySelector("#chips_sold_el");
 var chips_produced_el = document.querySelector("#chips_produced_el");
+var upgrade1_head = document.querySelector("#upgrade1_head");
+var upgrade1_values = document.querySelector("#upgrade1_values")
 
 // set
 var clicker_price = 40;
@@ -24,8 +26,10 @@ var worker_price = 80;
 worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
 clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
 var upgrade1_price = 500;
-
-let chips_move = 0;
+var upgrade1_lvl = 0;
+upgrade1_head.innerHTML="Clicker speed";
+upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Level: " + upgrade1_lvl;
+let chips_lr = false;
 
 // function that runs when the chips is clicked
 function chips_click(){
@@ -34,21 +38,18 @@ function chips_click(){
     console.log("+ " + chips_add + " chips");
 
     // chips animation
-    /*
-    if (chips_move = 0) {
-        chips_move++;
-        chips_img.classList.remove("chips_img_left");
-        chips_img.classList.add("chips_img");
-    } else if (chips_move = 1) {
-        chips_move++;
+    
+    if (chips_lr == false) {
+        chips_lr = true;
         chips_img.classList.remove("chips_img");
-        chips_img.classList.add("chips_img_right");
-    } else if (chips_move = 2) {
-        chips_move -= 2;
         chips_img.classList.remove("chips_img_right");
         chips_img.classList.add("chips_img_left");
-    }
-    */
+    } else if (chips_lr == true) {
+        chips_lr = false;
+        chips_img.classList.remove("chips_img_left");
+        chips_img.classList.add("chips_img_right");
+    } 
+    
 }
 
 // update
@@ -70,7 +71,7 @@ function worker_sell(){
     worker_sell_amount = workers * 2;
     worker_money_add = money_for_chips * worker_sell_amount;
 
-    if (chips > worker_sell_amount) {
+    if (chips > worker_sell_amount) { // sells chips for money
         chips -= worker_sell_amount;
         chips_sold += worker_sell_amount;
         money += worker_money_add;
@@ -82,31 +83,31 @@ function worker_sell(){
 var clicker_interval = 2000;
 var clicker_timer = setInterval(clickerTimer, clicker_interval);
 var clicker_earn = 0;
-/*
+
 let clicker_active = false;
-if (clicker_active = true) {
-    clicker_earn = 2;
-    console.log("clicker_active: " + clicker_active);
-}
-*/
 
 function buy_clicker(){
     if (money >= clicker_price){
+        if (clicker_active == false) { // runs the first time a clicker is bought
+            clicker_active = true;
+            clicker_earn = 2;
+            console.log("clicker_active: " + clicker_active);
+        }
+
         clickers++;
         money -= clicker_price;
-        clicker_active = true;
-        clicker_interval -= 20
-        //clicker_earn *= 2;
+        clicker_earn *= 1.33;
         clicker_price *= 1.2;
         clicker_values.innerHTML="Price: " + Math.round(clicker_price) + "<br>Amount: " + clickers;
     }
 }
 
+console.log("clicker_active " + clicker_active)
+
 // clicker timer, repeats depending on interval
 function clickerTimer(){
-    //chips += clicker_earn;
-    chips += clickers;
-    chips_produced += clickers;
+    chips += clicker_earn; // method of earning chips by clicker
+    chips_produced += clicker_earn
     chips_values.innerHTML="Chips: " + chips;
 }
 
@@ -124,8 +125,10 @@ function buy_worker(){
 function upgrade1(){
     if (money >= upgrade1_price){
         money -= upgrade1_price;
-        //upgrade1_price *= 3;
-        upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Amount: " + workers;
+        clicker_interval -= 50
+        upgrade1_lvl++;
+        upgrade1_price *= 3;
+        upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Level: " + upgrade1_lvl;
     }
 }
 

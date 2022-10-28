@@ -2,48 +2,60 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     margin-left: 2%;
 }
 
-.main {
-    margin-bottom: 10%;
+.left {
+    min-width: 30%;
+    margin-left: 3%;
+    max-width: 400px;
+}
+
+.middle {
+    min-width: 400px;
+    margin-left: 5%;
+}
+
+.right {
+    min-width: 380px;
+    margin-right: 3%;
 }
 
 .upgrades {
     margin-bottom: 10%;
 }
 
-#chips_img {
-    width: 10%;
-    height: 40%;
-    margin-bottom: 3%;
-}
+/* chips */
+    .chips_img {
+        width: 200px;
+        height: 300px;
+    }
 
-#chips_img_right {
-    width: 10%;
-    height: 40%;
-    margin-bottom: 3%;
-    margin-left: 1%;
-}
+    .chips_img_right {
+        width: 200px;
+        height: 300px;
+        margin-left: 1%;
+    }
 
-#chips_img_left {
-    width: 10%;
-    height: 40%;
-    margin-bottom: 3%;
-    margin-left: -1%;
-}
+    .chips_img_left {
+        width: 200px;
+        height: 300px;
+        margin-left: -1%;
+    }
 
-#clicker_img {
-    width: 7%;
-    height: 7%;
-}
+/* images */
+    #clicker_img {
+        width: 90px;
+        height: 100px;
+    }
 
-#worker_img {
-    width: 7%;
-    height: 7%;
-}
+    #worker_img {
+        width: 95px;
+        height: 100px;
+    }
 
-#upgrade1_img {
-    width: 20%;
-    height: 20%;
-}
+    #upgrade1_img {
+        width: 100px;
+        height: 100px;
+    }
