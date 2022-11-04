@@ -27,7 +27,6 @@ worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
 clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
 var upgrade1_price = 500;
 var upgrade1_lvl = 0;
-upgrade1_head.innerHTML="Clicker speed";
 upgrade1_values.innerHTML="Price: " + upgrade1_price + "<br>Level: " + upgrade1_lvl;
 let chips_lr = false;
 

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Clicker game</title>
+    <title>Chips Clicker</title>
 </head>
 <body>
     <div class="container">
 
         <div class="left"> <!-- left side panel -->
             <div class="main">
-                <h id="game_name" style="font-size:300%;">Chips Clicker</h>
+                <input type="text" id="game_name" placeholder="Your chips">
                 <h1 id="money_values"></h1>
                 <h1 id="chips_values"></h1>
                 <img class="chips_img" id="chips_img" src="img/chips.png" alt="chips">
@@ -24,10 +24,12 @@
                 <h1>Shop</h1>
                 <div class="shop_elements"> 
                     <div class="shop_clicker">
+                        <h2 id="clicker_head">Clickers</h2>
                         <img id="clicker_img" src="img/clicker.png" alt="clicker">
                         <h3 id="clicker_values">0</h3>
                     </div>
                     <div class="shop_worker">
+                        <h2 id="worker_text">Workers</h2>
                         <img id="worker_img" src="img/worker.png" alt="worker">
                         <h3 id="worker_values">0</h3>
                     </div>
@@ -39,7 +41,7 @@
             <div class="upgrades">
                 <h1>Upgrades</h1>
                 <div class="upgrade_elements"> 
-                    <h2 id="upgrade1_head"></h2>
+                    <h2 id="upgrade1_head">Clicker speed</h2>
                     <img src="img/add.png" id="upgrade1_img" alt="upgrade1">
                     <h3 id="upgrade1_values">0</h3>
                 </div>
