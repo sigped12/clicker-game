@@ -18,11 +18,11 @@ var worker_values = document.querySelector("#worker_values");
 var chips_sold_el = document.querySelector("#chips_sold_el");
 var chips_produced_el = document.querySelector("#chips_produced_el");
 var upgrade1_head = document.querySelector("#upgrade1_head");
-var upgrade1_values = document.querySelector("#upgrade1_values")
+var upgrade1_values = document.querySelector("#upgrade1_values");
 
 // set
 var clicker_price = 40;
-var worker_price = 80;
+var worker_price = 60;
 worker_values.innerHTML="Price: " + worker_price + "<br>Amount: " + workers;
 clicker_values.innerHTML="Price: " + clicker_price + "<br>Amount: " + clickers;
 var upgrade1_price = 500;
@@ -57,8 +57,8 @@ var update_timer = setInterval(updateTimer, 10);
 function updateTimer(){
     money_values.innerHTML="Money: " + Math.round(money);
     chips_values.innerHTML="Chips: " + Math.round(chips);
-    chips_sold_el.innerHTML="Chips sold: " + chips_sold;
-    chips_produced_el.innerHTML="Chips produced: " + chips_produced;
+    chips_sold_el.innerHTML="Chips sold: " + Math.round(chips_sold);
+    chips_produced_el.innerHTML="Chips produced: " + Math.round(chips_produced);
 }
 
 // upgrades
@@ -76,6 +76,7 @@ function worker_sell(){
         chips_sold += worker_sell_amount;
         money += worker_money_add;
         console.log("+ " + worker_money_add + " money");
+        console.log("worker_sell_amount " + worker_sell_amount);
     }
 }
 
@@ -96,8 +97,8 @@ function buy_clicker(){
 
         clickers++;
         money -= clicker_price;
-        clicker_earn *= 1.33;
-        clicker_price *= 1.2;
+        clicker_earn *= 2;
+        clicker_price *= 1.33;
         clicker_values.innerHTML="Price: " + Math.round(clicker_price) + "<br>Amount: " + clickers;
     }
 }
@@ -106,9 +107,9 @@ console.log("clicker_active " + clicker_active)
 
 // clicker timer, repeats depending on interval
 function clickerTimer(){
+    console.log("clicker_earn: " + clicker_earn);
     chips += clicker_earn; // method of earning chips by clicker
-    chips_produced += clicker_earn
-    chips_values.innerHTML="Chips: " + chips;
+    chips_produced += clicker_earn;
 }
 
 // worker
